@@ -8,36 +8,55 @@ const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
 
-const cpuScore = document.getElementById('cpu-score')
+let cpuScore = document.getElementById('cpu-score')
 let cpuStartScore = 0
-cpuScore.textContent = `CPU ${cpuStartScore}`
-const draw = document.getElementById('draw')
-let tiematches = 0
-draw.textContent = ` Draw ${tiematches}`
-const userScore = document.getElementById('user-score')
-let userStartScore = 0
-userScore.textContent = `User ${userStartScore}`
+cpuScore.textContent = cpuStartScore
 
-// click event doesnt change the number until the second time that outcome occurs
+let draw = document.getElementById('draw')
+let tieMatches = 0
+draw.textContent = tieMatches
+
+let userScore = document.getElementById('user-score')
+let userStartScore = 0
+userScore.textContent = userStartScore
+
+const gameOptions = ['Rock', 'Paper', 'Scissors']
+
 rock.addEventListener('click', function () {
   console.log('clicked rock')
-  const gameOptions = ['Rock', 'Paper', 'Scissors']
 
-  const randomGameOptionGenerator = Math.floor(
-    Math.random() * gameOptions.length
-  )
-  console.log('randomGameOptionGenerator', randomGameOptionGenerator)
-  if (randomGameOptionGenerator === 0) {
-    draw.textContent = `Draw ${tiematches++}`
+  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
+  console.log('randomOptionGenerator', randomOptionGenerator)
+  if (randomOptionGenerator === 0) {
+    tieMatches++
+    return (draw.textContent = tieMatches)
   }
-  if (randomGameOptionGenerator === 1)
-    return (cpuScore.textContent = ` CPU ${cpuStartScore++}`)
-  if (randomGameOptionGenerator === 2)
-    return (userScore.textContent = `User ${userStartScore++}`)
+  if (randomOptionGenerator === 1) {
+    cpuStartScore++
+    return (cpuScore.textContent = cpuStartScore)
+  }
+  if (randomOptionGenerator === 2) {
+    userStartScore++
+    return (userScore.textContent = userStartScore)
+  }
 })
 
 paper.addEventListener('click', function () {
   console.log('paper was selected')
+  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
+
+  if (randomOptionGenerator === 1) {
+    tieMatches++
+    return (draw.textContent = tieMatches)
+  }
+  if (randomOptionGenerator === 0) {
+    cpuStartScore++
+    return (cpuScore.textContent = cpuStartScore)
+  }
+  if (randomOptionGenerator === 2) {
+    userStartScore++
+    return (userScore.textContent = userStartScore)
+  }
 })
 
 scissors.addEventListener('click', function () {
