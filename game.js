@@ -1,9 +1,3 @@
-// add event listeners to each element
-// when clicked on, I want the computer to then select its random choice
-// the score will need to change based on the outcome of the selections
-// if user wins, user score icreases by 1 score ++ and vice versa
-//
-
 const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
@@ -58,23 +52,46 @@ paper.addEventListener('click', function () {
   const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
 
   if (randomOptionGenerator === 1) {
+    cpuSelection.textContent = 'CPU chose Paper'
+    whoWon.textContent = drawResultText
     tieMatches++
     return (draw.textContent = tieMatches)
   }
   if (randomOptionGenerator === 0) {
-    cpuStartScore++
-    return (cpuScore.textContent = cpuStartScore)
-  }
-  if (randomOptionGenerator === 2) {
+    cpuSelection.textContent = 'CPU chose Rock'
+    whoWon.textContent = userWonText
     userStartScore++
     return (userScore.textContent = userStartScore)
+  }
+  if (randomOptionGenerator === 2) {
+    cpuSelection.textContent = 'CPU chose Scissors'
+    whoWon.textContent = userLostText
+    cpuStartScore++
+    return (cpuScore.textContent = cpuStartScore)
   }
 })
 
 scissors.addEventListener('click', function () {
-  console.log('scissors was selected')
+  userSelection.textContent = 'You selected Scissors'
+  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
+
+  if (randomOptionGenerator === 1) {
+    cpuSelection.textContent = 'CPU chose Paper'
+    whoWon.textContent = userWonText
+    userStartScore++
+    return (userScore.textContent = userStartScore)
+  }
+
+  if (randomOptionGenerator === 0) {
+    cpuSelection.textContent = 'CPU chose Rock'
+    whoWon.textContent = userLostText
+    cpuStartScore++
+    return (cpuScore.textContent = cpuStartScore)
+  }
+  if (randomOptionGenerator === 2) {
+    cpuSelection.textContent = 'CPU chose Scissors'
+    whoWon.textContent = drawResultText
+    tieMatches++
+    return (draw.textContent = tieMatches)
+  }
 })
-
-// Add setTimeout function to
-
-// Add re-set button to play a new game.  The reset button should have
