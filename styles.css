@@ -1,19 +1,55 @@
 body {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(236, 233, 233);
 }
 
+.score {
+  display: flex;
+  border: 2px solid hsl(359, 46%, 44%);
+  margin: 0px 0 10px 0px;
+  padding: 4px;
+}
+#user-score {
+  color: #2fff39;
+  font-size: 25px;
+}
+#cpu-score {
+  color: hsl(359, 46%, 44%);
+  font-size: 25px;
+}
+#draw {
+  color: gray;
+  font-size: 25px;
+}
+.score .user-score {
+  margin-left: auto;
+}
+.score .draw {
+  margin: 0 10px 0;
+}
+
+.score .cpu-score {
+  margin-right: auto;
+}
 #game-title {
   color: #2a2b2b;
+  text-align: center;
 }
+
+.results {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+  font-size: 20px;
+}
+
 #paper {
   border: 5px solid #4b4b4b;
   border-radius: 5%;
   width: 20%;
   height: auto;
   display: block;
-  margin-left: auto;
+  margin: 10px;
+
   margin-right: auto;
-  margin-top: 30%;
+  margin-top: 20%;
   float: left;
   display: inline;
 }
@@ -24,9 +60,9 @@ body {
   width: 20%;
   height: auto;
   display: block;
-  margin-left: auto;
+
   margin-right: auto;
-  margin-top: 30%;
+  margin-top: 20%;
   float: left;
   display: inline;
 }
@@ -37,9 +73,14 @@ body {
   width: 20%;
   height: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30%;
-  float: left;
+
+  margin-top: 20%;
+  flex: 1;
+  margin-right: 10px;
+
   display: inline;
+}
+
+.results {
+  text-align: center;
 }
