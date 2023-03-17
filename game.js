@@ -24,6 +24,10 @@ userScore.textContent = userStartScore
 
 const gameOptions = ['Rock', 'Paper', 'Scissors']
 
+const drawResultText = `It's a draw! Go again!`
+const userLostText = 'You lost :/'
+const userWonText = 'You WON!!!'
+
 rock.addEventListener('click', function () {
   userSelection.textContent = 'You selected Rock'
 
@@ -31,19 +35,19 @@ rock.addEventListener('click', function () {
   console.log('randomOptionGenerator', randomOptionGenerator)
   if (randomOptionGenerator === 0) {
     cpuSelection.textContent = 'CPU chose Rock'
-    whoWon.textContent = 'TIE! Go again!'
+    whoWon.textContent = drawResultText
     tieMatches++
     return (draw.textContent = tieMatches)
   }
   if (randomOptionGenerator === 1) {
     cpuSelection.textContent = 'CPU chose Paper'
-    whoWon.textContent = 'You lost :/'
+    whoWon.textContent = userLostText
     cpuStartScore++
     return (cpuScore.textContent = cpuStartScore)
   }
   if (randomOptionGenerator === 2) {
     cpuSelection.textContent = 'CPU chose Scissors'
-    whoWon.textContent = 'You WON!!!'
+    whoWon.textContent = userWonText
     userStartScore++
     return (userScore.textContent = userStartScore)
   }

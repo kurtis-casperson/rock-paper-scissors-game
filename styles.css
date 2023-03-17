@@ -1,3 +1,10 @@
+body {
+  background-color: rgb(230, 230, 230);
+}
+
+#game-title {
+  color: #2a2b2b;
+}
 #paper {
   border: 5px solid #4b4b4b;
   border-radius: 5%;
