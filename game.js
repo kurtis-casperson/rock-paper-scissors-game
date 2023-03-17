@@ -7,7 +7,9 @@
 const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
-
+let userSelection = document.getElementById('user-selection')
+let cpuSelection = document.getElementById('cpu-selection')
+let whoWon = document.getElementById('who-won')
 let cpuScore = document.getElementById('cpu-score')
 let cpuStartScore = 0
 cpuScore.textContent = cpuStartScore
@@ -23,26 +25,32 @@ userScore.textContent = userStartScore
 const gameOptions = ['Rock', 'Paper', 'Scissors']
 
 rock.addEventListener('click', function () {
-  console.log('clicked rock')
+  userSelection.textContent = 'You selected Rock'
 
   const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
   console.log('randomOptionGenerator', randomOptionGenerator)
   if (randomOptionGenerator === 0) {
+    cpuSelection.textContent = 'CPU chose Rock'
+    whoWon.textContent = 'TIE! Go again!'
     tieMatches++
     return (draw.textContent = tieMatches)
   }
   if (randomOptionGenerator === 1) {
+    cpuSelection.textContent = 'CPU chose Paper'
+    whoWon.textContent = 'You lost :/'
     cpuStartScore++
     return (cpuScore.textContent = cpuStartScore)
   }
   if (randomOptionGenerator === 2) {
+    cpuSelection.textContent = 'CPU chose Scissors'
+    whoWon.textContent = 'You WON!!!'
     userStartScore++
     return (userScore.textContent = userStartScore)
   }
 })
 
 paper.addEventListener('click', function () {
-  console.log('paper was selected')
+  userSelection.textContent = 'You selected Paper'
   const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
 
   if (randomOptionGenerator === 1) {
@@ -63,15 +71,6 @@ scissors.addEventListener('click', function () {
   console.log('scissors was selected')
 })
 
-// userScore.addEventListener('', function () {
-// listen for what the outcome of the match result is
-// then add 1 to the score if user won
-// })
+// Add setTimeout function to
 
-// cpuScore.addEventListener('click', function () {
-// listen for what the outcome of the match result is
-// then add 1 to the score if cpu won
-// })
-
-// let number = 0
-// draw.innerText = `Draw ${number}`
+// Add re-set button to play a new game.  The reset button should have
