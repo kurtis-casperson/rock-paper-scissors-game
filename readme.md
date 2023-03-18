@@ -14,5 +14,5 @@ Access my project [here!](https://kurtis-casperson.github.io/rock-paper-scissors
 
 # Author
 
-Kurtis Casperson
+Hey I'm Kurtis Casperson!
 Connect with me! [LinkedIn](https://www.linkedin.com/in/kurtis-casperson/)
