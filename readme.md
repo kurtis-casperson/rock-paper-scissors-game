@@ -8,7 +8,7 @@ This is a rock, paper, scissors game that updates the score each time one of the
 
 This app uses eventListeners to change the score of the results whenone of the icons is clicked.
 
-I had some difficulty with the css of this project. Placing the icons next to each other in the middle of the screen was giving me trouble, but it game the opportunity to learn more about classes, ID's, and divs and how they can be manipulated.
+I had some difficulty with the css of this project. Placing the icons next to each other in the middle of the screen was giving me trouble, but it gave me the opportunity to learn more about classes, ID's, and divs and how they can be manipulated.
 
 Access my project [here!](https://kurtis-casperson.github.io/rock-paper-scissors-game/)
 
