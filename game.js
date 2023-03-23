@@ -4,94 +4,66 @@ const scissors = document.getElementById('scissors')
 let userSelection = document.getElementById('user-selection')
 let cpuSelection = document.getElementById('cpu-selection')
 let whoWon = document.getElementById('who-won')
-let cpuScore = document.getElementById('cpu-score')
-let cpuStartScore = 0
-cpuScore.textContent = cpuStartScore
+let cpuScoreDisplay = document.getElementById('cpu-score')
+let tieScoreDisplay = document.getElementById('draw')
+let userScoreDisplay = document.getElementById('user-score')
+let cpuScore = 0
+let tieScore = 0
+let userScore = 0
 
-let draw = document.getElementById('draw')
-let tieMatches = 0
-draw.textContent = tieMatches
+const playGame = (gameChoice) => {
+  gameChoice.preventDefault()
+  const userChoice = gameChoice.target.id
+  const computerChoice = getComputerChoice()
+  const winner = getWinner(userChoice, computerChoice)
+  updateTotals(winner)
+  updateDisplays(userChoice, computerChoice, winner)
+}
 
-let userScore = document.getElementById('user-score')
-let userStartScore = 0
-userScore.textContent = userStartScore
+const getComputerChoice = () => {
+  const gameOptions = ['rock', 'paper', 'scissors']
+  return gameOptions[Math.floor(Math.random() * gameOptions.length)]
+}
 
-const gameOptions = ['Rock', 'Paper', 'Scissors']
+const getWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) return "It's a draw! Go again!"
+  switch (userChoice) {
+    case 'rock':
+      return computerChoice === 'paper' ? 'You lose :/' : 'You WIN!!!'
 
-const drawResultText = `It's a draw! Go again!`
-const userLostText = 'You lost :/'
-const userWonText = 'You WON!!!'
+    case 'paper':
+      return computerChoice === 'scissors' ? 'You lose :/' : 'You WIN!!!'
 
-rock.addEventListener('click', function () {
-  userSelection.textContent = 'You selected Rock'
-
-  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
-  console.log('randomOptionGenerator', randomOptionGenerator)
-  if (randomOptionGenerator === 0) {
-    cpuSelection.textContent = 'CPU chose Rock'
-    whoWon.textContent = drawResultText
-    tieMatches++
-    return (draw.textContent = tieMatches)
+    case 'scissors':
+      return computerChoice === 'rock' ? 'You lose :/' : 'You WIN!!!'
   }
-  if (randomOptionGenerator === 1) {
-    cpuSelection.textContent = 'CPU chose Paper'
-    whoWon.textContent = userLostText
-    cpuStartScore++
-    return (cpuScore.textContent = cpuStartScore)
-  }
-  if (randomOptionGenerator === 2) {
-    cpuSelection.textContent = 'CPU chose Scissors'
-    whoWon.textContent = userWonText
-    userStartScore++
-    return (userScore.textContent = userStartScore)
-  }
-})
+}
 
-paper.addEventListener('click', function () {
-  userSelection.textContent = 'You selected Paper'
-  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
+function updateTotals(winner) {
+  switch (winner) {
+    case "It's a draw! Go again!":
+      tieScore++
+      break
 
-  if (randomOptionGenerator === 1) {
-    cpuSelection.textContent = 'CPU chose Paper'
-    whoWon.textContent = drawResultText
-    tieMatches++
-    return (draw.textContent = tieMatches)
-  }
-  if (randomOptionGenerator === 0) {
-    cpuSelection.textContent = 'CPU chose Rock'
-    whoWon.textContent = userWonText
-    userStartScore++
-    return (userScore.textContent = userStartScore)
-  }
-  if (randomOptionGenerator === 2) {
-    cpuSelection.textContent = 'CPU chose Scissors'
-    whoWon.textContent = userLostText
-    cpuStartScore++
-    return (cpuScore.textContent = cpuStartScore)
-  }
-})
+    case 'You lose :/':
+      cpuScore++
+      break
 
-scissors.addEventListener('click', function () {
-  userSelection.textContent = 'You selected Scissors'
-  const randomOptionGenerator = Math.floor(Math.random() * gameOptions.length)
+    default:
+      userScore++
+      break
+  }
+}
 
-  if (randomOptionGenerator === 1) {
-    cpuSelection.textContent = 'CPU chose Paper'
-    whoWon.textContent = userWonText
-    userStartScore++
-    return (userScore.textContent = userStartScore)
-  }
+const updateDisplays = (userChoice, computerChoice, winner) => {
+  cpuSelection.textContent = `CPU chose ${computerChoice}`
+  userSelection.textContent = `You selected ${userChoice}`
+  whoWon.textContent = `${winner}`
+  cpuScoreDisplay.textContent = cpuScore
+  tieScoreDisplay.textContent = tieScore
+  userScoreDisplay.textContent = userScore
+}
 
-  if (randomOptionGenerator === 0) {
-    cpuSelection.textContent = 'CPU chose Rock'
-    whoWon.textContent = userLostText
-    cpuStartScore++
-    return (cpuScore.textContent = cpuStartScore)
-  }
-  if (randomOptionGenerator === 2) {
-    cpuSelection.textContent = 'CPU chose Scissors'
-    whoWon.textContent = drawResultText
-    tieMatches++
-    return (draw.textContent = tieMatches)
-  }
-})
+scissors.addEventListener('click', playGame)
+paper.addEventListener('click', playGame)
+rock.addEventListener('click', playGame)
