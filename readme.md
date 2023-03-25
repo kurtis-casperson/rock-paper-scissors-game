@@ -2,7 +2,7 @@
 
 This is a rock, paper, scissors game that updates the score each time one of the icons is clicked, and lets the user know who won.
 
-![Getting Started] (Add picture after fixing css)
+![Getting Started](./game-pic.png)
 
 # Description
 
